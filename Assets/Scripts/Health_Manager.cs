@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health_Manager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    [SerializeField] bool isAlive = true;
 
+    public UnityEvent hasDied;
+    public UnityEvent hasRevived;
+
+    public void Kill (){
+      if(isAlive) {
+        setIsAlive(false);
+        hasDied.Invoke();
+      }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public void Revive (){
+      if(!isAlive) {
+        setIsAlive(true);
+        hasRevived.Invoke();
+      }
+    }
 
+    public void setIsAlive (bool input){
+      isAlive = input;
+    }
+
+    public void toggleIsAlive (){
+      isAlive = !isAlive;
     }
 }
