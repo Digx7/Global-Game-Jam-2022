@@ -776,6 +776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1Score: 0
   p2Score: 0
+  maxScore: 5
   p1: {fileID: 1321850938}
   p2: {fileID: 1091159298}
 --- !u!4 &1903381301
