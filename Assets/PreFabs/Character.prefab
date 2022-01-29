@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4798226657750784306}
   - component: {fileID: 8616547394134008373}
+  - component: {fileID: 3887625415377000033}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -56,6 +57,61 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3887625415377000033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22604382402879314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75303c4b4d981545b0591f4d8171f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EventList:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5645004359220551323}
+        m_TargetAssemblyTypeName: Character_Action_Manager, Assembly-CSharp
+        m_MethodName: Set_CanSelectAcion
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6628361295865279934}
+        m_TargetAssemblyTypeName: Bullet_Detector, Assembly-CSharp
+        m_MethodName: Set_CanTakeDamage
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6628361295865279934}
+        m_TargetAssemblyTypeName: Bullet_Detector, Assembly-CSharp
+        m_MethodName: Set_CanTakeDamage
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1465060083485746531
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b11559af25029448bedc3e9075c1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 8616547394134008373}
 --- !u!1 &8135480574788585468
 GameObject:
   m_ObjectHideFlags: 0
