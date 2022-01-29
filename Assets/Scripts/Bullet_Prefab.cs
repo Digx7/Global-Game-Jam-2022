@@ -9,12 +9,15 @@ public class Bullet_Prefab : MonoBehaviour
     [SerializeField] private Rigidbody bulletRigidBody;
 
     public void Start (){
-      if (bulletSpeed == 0.0f) bulletSpeed = 1000.0f;
-      if (bulletTrajectory == Vector3.zero) bulletTrajectory = Vector3.right;
+      if (bulletSpeed == 0.0f) bulletSpeed = 100.0f;
+      if (bulletTrajectory == Vector3.zero) bulletTrajectory = Vector3.up;
       if (bulletRigidBody == null) bulletRigidBody = this.GetComponent<Rigidbody>();
     }
 
     public void FixedUpdate (){
-      bulletRigidBody.velocity = bulletTrajectory * bulletSpeed * Time.deltaTime;
+      Vector3 forwardVel = transform.forward * bulletSpeed * bulletTrajectory.x;
+      Vector3 horizontalVel = transform.right * bulletSpeed * bulletTrajectory.y;
+
+      bulletRigidBody.velocity = forwardVel + horizontalVel;
     }
 }

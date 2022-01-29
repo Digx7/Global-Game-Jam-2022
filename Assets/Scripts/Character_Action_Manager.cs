@@ -35,7 +35,7 @@ public class Character_Action_Manager : MonoBehaviour
     // Main Functions ---------------
 
     public void PlaySelectedAction (){
-      playSelectedActionEvent.Invoke(selectedAction);
+      if(Get_CanSelectAction()) playSelectedActionEvent.Invoke(selectedAction);
       Set_CanSelectAcion(false);
     }
 }

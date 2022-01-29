@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedAction: 0
-  canSelectAction: 0
+  canSelectAction: 1
   playSelectedActionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -398,6 +398,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657d996c72881304b89f7c457d1a1c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAlive: 1
+  hasDied:
+    m_PersistentCalls:
+      m_Calls: []
+  hasRevived:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8135480574788585468
 GameObject:
   m_ObjectHideFlags: 0

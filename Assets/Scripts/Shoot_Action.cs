@@ -15,7 +15,7 @@ public class Shoot_Action : MonoBehaviour
 
     public void Shoot () {
       Debug.Log("Shoot Action");
-      Instantiate(bullet_prefab, bulletSpawningPoint.position, Quaternion.identity);
+      Instantiate(bullet_prefab, bulletSpawningPoint.position, bulletSpawningPoint.rotation);
       //Needs to play shoot animation
     }
 }
