@@ -10,4 +10,6 @@ public class Animation_Event_Relay : MonoBehaviour
   public void InvokeEvent(int input){
     EventList[input].Invoke();
   }
+
+  public void StupidFunction (){}
 }

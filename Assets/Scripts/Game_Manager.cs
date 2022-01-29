@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Game_Manager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class Game_Manager : MonoBehaviour
 
     [SerializeField] private GameObject p1;
     [SerializeField] private GameObject p2;
+
+    public UnityEvent GameStart_Event;
+    public UnityEvent GameEnd_Event;
+    public Animator GameManager_Animator;
 
     private Character_Action_Manager P1_Action_Manager;
     private Character_Action_Manager P2_Action_Manager;
@@ -37,7 +42,15 @@ public class Game_Manager : MonoBehaviour
     }
 
     public void Start (){
-      startRound();
+      GameStart();
+    }
+
+    public void GameStart (){
+      GameStart_Event.Invoke();
+    }
+
+    public void GameEnd (){
+      GameEnd_Event.Invoke();
     }
 
     public void startRound (){
@@ -46,26 +59,15 @@ public class Game_Manager : MonoBehaviour
       //Start Countdown
       Debug.Log("Countdown goes here");
 
-      P1_Action_Manager.Set_CanSelectAcion(true);
-      P1_Health_Manager.setIsAlive(true);
-      P1_Bullet_Detector.Set_CanTakeDamage(true);
-
-      P2_Action_Manager.Set_CanSelectAcion(true);
-      P2_Health_Manager.setIsAlive(true);
-      P2_Bullet_Detector.Set_CanTakeDamage(true);
+      GameManager_Animator.SetTrigger("RoundStart");
+      //setPlayersCanDoStuff(true);
     }
 
     public void endRound (string input){
       //Clean up stuff after round
       Debug.Log("Round has ended");
 
-      P1_Action_Manager.Set_CanSelectAcion(false);
-      P1_Health_Manager.setIsAlive(false);
-      P1_Bullet_Detector.Set_CanTakeDamage(false);
-
-      P2_Action_Manager.Set_CanSelectAcion(false);
-      P2_Health_Manager.setIsAlive(false);
-      P2_Bullet_Detector.Set_CanTakeDamage(false);
+      setPlayersCanDoStuff(false);
 
       if(input == "Player 1"){
         p2Score++;
@@ -78,6 +80,16 @@ public class Game_Manager : MonoBehaviour
       // Ending round flare
 
       if(!maxScoreReached()) startRound();
+    }
+
+    public void setPlayersCanDoStuff (bool input){
+      P1_Action_Manager.Set_CanSelectAcion(input);
+      P1_Health_Manager.setIsAlive(input);
+      P1_Bullet_Detector.Set_CanTakeDamage(input);
+
+      P2_Action_Manager.Set_CanSelectAcion(input);
+      P2_Health_Manager.setIsAlive(input);
+      P2_Bullet_Detector.Set_CanTakeDamage(input);
     }
 
     private bool maxScoreReached (){
