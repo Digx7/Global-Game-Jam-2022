@@ -5,15 +5,17 @@ using UnityEngine.Events;
 
 public class Health_Manager : MonoBehaviour
 {
-    [SerializeField] bool isAlive = true;
+    [SerializeField] private bool isAlive = true;
 
-    public UnityEvent hasDied;
+    [TagSelector] public string Obj_Name;
+    public StringEvent hasDied;
     public UnityEvent hasRevived;
 
     public void Kill (){
       if(isAlive) {
         setIsAlive(false);
-        hasDied.Invoke();
+        hasDied.Invoke(Obj_Name);
+        Debug.Log("I died");
       }
     }
 
