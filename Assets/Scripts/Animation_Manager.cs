@@ -25,11 +25,11 @@ public class Animation_Manager : MonoBehaviour
     }
 
     public void WonAnimation (){
-      animator.SetBool("Won", true);
+      animator.SetTrigger("Won");
     }
 
     public void LostAnimation (){
-      animator.SetBool("Lost", true);
+      animator.SetTrigger("Lost");
     }
 
     public void PreGameAnimation (){

@@ -8,4 +8,8 @@ public class Scene_Loader : MonoBehaviour
     public void LoadNewScene(string sceneName){
       SceneManager.LoadScene(sceneName);
     }
+
+    public void ReloadCurrentScene (){
+      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
