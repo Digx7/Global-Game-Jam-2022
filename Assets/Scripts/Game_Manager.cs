@@ -16,6 +16,7 @@ public class Game_Manager : MonoBehaviour
     public UnityEvent GameEnd_Event;
     public UnityEvent P1won_Event;
     public UnityEvent P2won_Event;
+    public UnityEvent RoundEnd_Event;
     public Animator GameManager_Animator;
 
     private Character_Action_Manager P1_Action_Manager;
@@ -29,6 +30,8 @@ public class Game_Manager : MonoBehaviour
 
     private Animation_Manager P1_Animation_Manager;
     private Animation_Manager P2_Animation_Manager;
+
+    //Setup ----------------------------------
 
     public void Awake (){
       //Set up all private variables
@@ -52,12 +55,26 @@ public class Game_Manager : MonoBehaviour
       GameStart();
     }
 
+    //Starting ----------------------------------
+
     public void GameStart (){
       GameStart_Event.Invoke();
 
       P1_Animation_Manager.PreGameAnimation();
       P2_Animation_Manager.PreGameAnimation();
     }
+
+    public void startNewRound (){
+      GameManager_Animator.SetTrigger("RoundStart");
+    }
+
+    public void startRound (){
+
+      setPlayerLocks(false);
+      setPlayersCanDoStuff(true);
+    }
+
+    //Ending ---------------------------------
 
     public void GameEnd (){
       GameEnd_Event.Invoke();
@@ -80,16 +97,6 @@ public class Game_Manager : MonoBehaviour
       }
     }
 
-    public void startNewRound (){
-      GameManager_Animator.SetTrigger("RoundStart");
-    }
-
-    public void startRound (){
-
-      setPlayerLocks(false);
-      setPlayersCanDoStuff(true);
-    }
-
     public void endRound (string input){
       //Clean up stuff after round
       Debug.Log("Round has ended");
@@ -104,11 +111,15 @@ public class Game_Manager : MonoBehaviour
         p1Score++;
       }
 
+      RoundEnd_Event.Invoke();
+
       // Ending round flare
 
       if(!maxScoreReached()) startNewRound();
       else GameEnd();
     }
+
+    //Setters --------------------------------
 
     public void setPlayerLocks (bool input){
       P1_Action_Manager.LOCK_CANSELECTACTION(input);
@@ -124,6 +135,18 @@ public class Game_Manager : MonoBehaviour
       P2_Health_Manager.setIsAlive(input);
       P2_Bullet_Detector.Set_CanTakeDamage(input);
     }
+
+    //Getters -----------------------------------
+
+    public int Get_P1Score (){
+      return p1Score;
+    }
+
+    public int Get_P2Score (){
+      return p2Score;
+    }
+
+    // Helpers ------------------
 
     private bool maxScoreReached (){
       if(p1Score >= maxScore) return true;
