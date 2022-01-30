@@ -23,4 +23,8 @@ public class Scene_Loader : MonoBehaviour
     public void LoadNextScene(){
       LoadNewScene(nextScene);
     }
+
+    public void QuitGame(){
+      Application.Quit();
+    }
 }
