@@ -51,16 +51,18 @@ public class Game_Manager : MonoBehaviour
 
     public void GameEnd (){
       GameEnd_Event.Invoke();
+
+      GameManager_Animator.SetTrigger("GameEnd");
+    }
+
+    public void startNewRound (){
+      GameManager_Animator.SetTrigger("RoundStart");
     }
 
     public void startRound (){
-      //Set up stuff for a new round
 
-      //Start Countdown
-      Debug.Log("Countdown goes here");
-
-      GameManager_Animator.SetTrigger("RoundStart");
-      //setPlayersCanDoStuff(true);
+      setPlayerLocks(false);
+      setPlayersCanDoStuff(true);
     }
 
     public void endRound (string input){
@@ -79,7 +81,13 @@ public class Game_Manager : MonoBehaviour
 
       // Ending round flare
 
-      if(!maxScoreReached()) startRound();
+      if(!maxScoreReached()) startNewRound();
+      else GameEnd();
+    }
+
+    public void setPlayerLocks (bool input){
+      P1_Action_Manager.LOCK_CANSELECTACTION(input);
+      P2_Action_Manager.LOCK_CANSELECTACTION(input);
     }
 
     public void setPlayersCanDoStuff (bool input){
@@ -96,5 +104,11 @@ public class Game_Manager : MonoBehaviour
       if(p1Score >= maxScore) return true;
       if(p2Score >= maxScore) return true;
       return false;
+    }
+
+    private string whoWon (){
+      if(p1Score >= maxScore) return "Player 1";
+      if(p2Score >= maxScore) return "Player 1";
+      return "Null";
     }
 }

@@ -7,6 +7,7 @@ public class Character_Action_Manager : MonoBehaviour
 {
     [SerializeField] private Action selectedAction;
     [SerializeField] private bool canSelectAction = false;
+    [SerializeField] private bool lockSelectAction = false;
 
     public ActionEvent playSelectedActionEvent;
 
@@ -20,9 +21,15 @@ public class Character_Action_Manager : MonoBehaviour
       return selectedAction;
     }
 
+    public void LOCK_CANSELECTACTION (bool input){
+      lockSelectAction = input;
+    }
+
     public void Set_CanSelectAcion (bool input){
-      canSelectAction = input;
-      Debug.Log("Something set canSelectAction to " + input);
+      if(!lockSelectAction){
+        canSelectAction = input;
+        Debug.Log("Something set canSelectAction to " + input);
+      }  
     }
 
     public bool Get_CanSelectAction (){
