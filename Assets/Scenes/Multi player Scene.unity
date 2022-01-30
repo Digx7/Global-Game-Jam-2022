@@ -771,6 +771,10 @@ PrefabInstance:
       propertyPath: p2
       value: 
       objectReference: {fileID: 1091159298}
+    - target: {fileID: 6909969918024450263, guid: 39c895d2b6252ea49b834334e1e7d2ba, type: 3}
+      propertyPath: maxScore
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8000521379027527161, guid: 39c895d2b6252ea49b834334e1e7d2ba, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

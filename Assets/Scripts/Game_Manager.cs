@@ -68,6 +68,10 @@ public class Game_Manager : MonoBehaviour
       GameManager_Animator.SetTrigger("RoundStart");
     }
 
+    public void startMatchPointRound (){
+      GameManager_Animator.SetTrigger("MatchPoint");
+    }
+
     public void startRound (){
 
       setPlayerLocks(false);
@@ -115,6 +119,7 @@ public class Game_Manager : MonoBehaviour
 
       // Ending round flare
 
+      if(isMatchPoint()) startMatchPointRound();
       if(!maxScoreReached()) startNewRound();
       else GameEnd();
     }
@@ -147,6 +152,12 @@ public class Game_Manager : MonoBehaviour
     }
 
     // Helpers ------------------
+
+    private bool isMatchPoint(){
+      if(p1Score + 1 == maxScore) return true;
+      if(p2Score + 1 == maxScore) return true;
+      else return false;
+    }
 
     private bool maxScoreReached (){
       if(p1Score >= maxScore) return true;

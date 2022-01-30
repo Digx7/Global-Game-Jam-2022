@@ -30,6 +30,7 @@ public class Music_Manager : MonoBehaviour
 
   private void CheckIfShouldChangeQue (Scene current, Scene next){
     for(int i=0; i < CueList.Count; ++i){
+      if(next.name == current.name) return;
       if(CueList[i].sceneToCueIn == next.name) ChangeCue(i);
     }
   }

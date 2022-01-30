@@ -49,6 +49,7 @@ MonoBehaviour:
   CueList:
   - {fileID: 11400000, guid: 873dceea3ee92db478163e32981759db, type: 2}
   - {fileID: 11400000, guid: 41a298eeb14ed6142b5a5684f2f07230, type: 2}
+  - {fileID: 11400000, guid: b22ea77656c4a25479faaa366b311927, type: 2}
   audioSource: {fileID: 325427675987462743}
   animator: {fileID: 7072263970365552843}
 --- !u!82 &325427675987462743
