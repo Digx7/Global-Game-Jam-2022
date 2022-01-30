@@ -23,4 +23,16 @@ public class Animation_Manager : MonoBehaviour
     public void BluffAnimation (){
       animator.SetTrigger("Bluff");
     }
+
+    public void WonAnimation (){
+      animator.SetBool("Won", true);
+    }
+
+    public void LostAnimation (){
+      animator.SetBool("Lost", true);
+    }
+
+    public void PreGameAnimation (){
+      animator.SetTrigger("Pre-game");
+    }
 }
