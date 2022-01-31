@@ -119,8 +119,10 @@ public class Game_Manager : MonoBehaviour
 
       // Ending round flare
 
-      if(isMatchPoint()) startMatchPointRound();
-      if(!maxScoreReached()) startNewRound();
+      if(!maxScoreReached()) {
+        if(isMatchPoint()) startMatchPointRound();
+        else startNewRound();
+      }
       else GameEnd();
     }
 
